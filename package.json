@@ -1,11 +1,19 @@
 {
   "name": "pdf-screenshot",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
+  "author": "huanger",
+  "description": "针对pdf文件的截图",
+  "keywords": [
+    "vue",
+    "screenshot",
+    "pdf-screenshot"
+  ],
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "lib": "vue-cli-service build --target lib --name pdf-screenshot --dest lib ./src/main.js"
   },
   "dependencies": {
     "core-js": "^3.8.3",
