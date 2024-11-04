@@ -1,6 +1,7 @@
 {
   "name": "pdf-screenshot",
   "version": "0.1.0",
+  "main": "lib/pdf-screenshot.umd.min.js",
   "private": false,
   "author": "huanger",
   "description": "针对pdf文件的截图",
@@ -9,11 +10,15 @@
     "screenshot",
     "pdf-screenshot"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://gitee.com/smileHuang_hhm/pdf-screenshot.git"
+  },
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "lib": "vue-cli-service build --target lib --name pdf-screenshot --dest lib ./src/main.js"
+    "lib": "vue-cli-service build --target lib --name pdf-screenshot --dest pdf-screenshot packages/index.js"
   },
   "dependencies": {
     "core-js": "^3.8.3",
