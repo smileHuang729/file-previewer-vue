@@ -1,10 +1,10 @@
 {
   "name": "pdf-screenshot",
   "version": "0.1.0",
-  "main": "lib/pdf-screenshot.umd.min.js",
+  "main": "file-previewer/file-previewer.umd.min.js",
   "private": false,
-  "author": "huanger",
-  "description": "针对pdf文件的截图",
+  "author": "smileHuang729",
+  "description": "针对不同类型文件的统一预览",
   "keywords": [
     "vue",
     "screenshot",
@@ -12,16 +12,21 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://gitee.com/smileHuang_hhm/pdf-screenshot.git"
+    "url": "https://github.com/smileHuang729/file-previewer.git"
   },
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "lib": "vue-cli-service build --target lib --name pdf-screenshot --dest pdf-screenshot packages/index.js"
+    "lib": "vue-cli-service build --target lib --name file-previewer --dest file-previewer packages/index.js"
   },
   "dependencies": {
     "core-js": "^3.8.3",
+    "less": "^4.2.0",
+    "less-loader": "^12.2.0",
+    "node-polyfill-webpack-plugin": "^4.0.0",
+    "pdfjs-dist": "^2.0.943",
+    "sass": "^1.80.6",
     "vue": "^2.6.14"
   },
   "devDependencies": {
@@ -30,6 +35,7 @@
     "@vue/cli-plugin-babel": "~5.0.0",
     "@vue/cli-plugin-eslint": "~5.0.0",
     "@vue/cli-service": "~5.0.0",
+    "css-loader": "^2.1.1",
     "eslint": "^7.32.0",
     "eslint-plugin-vue": "^8.0.3",
     "vue-template-compiler": "^2.6.14"
