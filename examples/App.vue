@@ -5,7 +5,7 @@
       <button @click="handleUpload">导入文件</button>
     </div>
     <FilePreviewer
-      width="800"
+      width="1200"
       :fileBlob="fileBlob"
     />
   </div>
@@ -54,7 +54,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: calc(100% - 470px);
+  width: calc(100% - 1220px);
   height: 100%;
   margin-right: 20px;
 }

@@ -75,6 +75,7 @@ export default {
   border: 1px solid #ccc;
   box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);
   border-radius: 4px;
+  box-sizing: border-box;
 }
 .file-previewer>.toolbar{
   height: 35px;
@@ -83,7 +84,7 @@ export default {
 .file-previewer>.content{
   height: calc(100% - 35px);
   width: 100%;
-  padding: 20px;
   box-sizing: border-box;
+  overflow: auto;
 }
 </style>

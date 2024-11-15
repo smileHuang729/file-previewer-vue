@@ -1,7 +1,12 @@
 <template>
   <div class="pdf-container" ref="pdfContainerRef">
     <!--<div class="pdf-box" v-for="item in totalPage" :key="item" :id="`page-${item}`">-->
-      <canvas v-for="item in totalPage" :key="item" :id="`canvas-${item}`"></canvas>
+
+    <div class="pdf-page" v-for="item in totalPage" :key="item">
+      <div class="canvas-wrapper">
+        <canvas :id="`canvas-${item}`"></canvas>
+      </div>
+    </div>
     <!--</div>-->
 
   </div>
@@ -42,12 +47,13 @@ export default {
     return {
       pdfDoc: null,
       totalPage: 0, // 总共的页数
-      scale: 2
+      scale: 1,
+      containerWidth: 0
     }
   },
   mounted() {
     console.log('pdf-container', this.$refs.pdfContainerRef.offsetHeight)
-
+    this.containerWidth = this.$refs.pdfContainerRef.offsetWidth
   },
   methods: {
     initPdf(option) {
@@ -64,7 +70,6 @@ export default {
     },
     renderPage() {
       console.log('2--渲染pdf', this.totalPage)
-      const containerHeight = this.$refs.pdfContainerRef.offsetHeight
       for (let i = 1; i <= this.totalPage; i++){
         // 创建canvas节点
         const canvas = document.getElementById("canvas-" + i);
@@ -74,12 +79,12 @@ export default {
         // 获取每一页的内容
         this.pdfDoc.getPage(i).then(page => {
           // 文件页面的视图1倍
-          const viewport = page.getViewport(this.scale);
+          const viewport = page.getViewport(2);
           // 将画布宽度设置为视图宽度
           canvas.width = viewport.width;
           canvas.height = viewport.height;
           canvas.style.display = "block"
-          canvas.style.height = containerHeight + 'px'
+          canvas.style.height = this.containerWidth * this.scale + 'px'
 
           const renderContext = {
             canvasContext: ctx,
@@ -99,15 +104,12 @@ export default {
 .pdf-container{
   width: 100%;
   height: 100%;
-  overflow: auto;
 }
 .pdf-container canvas{
-  margin: 10px auto;
+  margin: 0 auto;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);
 }
-.pdf-container canvas:first-child{
-  margin-top: 0;
-}
-.pdf-container canvas:last-child{
-  margin-bottom: 0;
+.pdf-container .pdf-page{
+  border: 9px solid transparent;
 }
 </style>
