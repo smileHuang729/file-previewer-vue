@@ -1,55 +1,76 @@
 <template>
   <div class="toolbar-container">
-    <div class="toolbarViewer toolbarViewerLeft">
-      <div class="sidebarToggle toolbarButton" :class="isOpenSidebar?'opened':''" @click="handleChangeSidebar"></div>
-    </div>
-    <div class="toolbarViewer toolbarViewerMiddle">2</div>
-    <div class="toolbarViewer toolbarViewerRight">3</div>
+    <!--页码控制、缩略图-->
+    <ToolbarLeft
+      class="toolbarViewer"
+      :disabled="disabled"
+      :pageNum="pageNum"
+      @handleChangeSidebar="isOpen => $emit('handleChangeSidebar', isOpen)"
+    />
+
+    <!--中间缩放比例控制-->
+    <ToolbarMiddle
+      class="toolbarViewer"
+      :disabled="disabled"
+    />
+
+    <!--其他工具-->
+    <ToolbarRight
+      class="toolbarViewer"
+      :disabled="disabled"
+    />
   </div>
 </template>
 
 <script>
+import "./index.css"
+import ToolbarLeft from "./components/toolbarLeft.vue";
+import ToolbarMiddle from "./components/toolbarMiddle.vue";
+import ToolbarRight from "./components/toolbarRight.vue";
 export default {
   name: "filePriviewerToolbar",
+  components: {
+    ToolbarLeft,
+    ToolbarMiddle,
+    ToolbarRight
+  },
+  props: {
+    disabled: {
+      type: Boolean,
+      default: false
+    },
+    pageNum: {
+      type: Number,
+      default: 0
+    }
+  },
   data() {
     return {
-      isOpenSidebar: false
+
     }
   },
   methods: {
-    handleChangeSidebar() {
-      this.isOpenSidebar = !this.isOpenSidebar
-      this.$emit('handleChangeSidebar', this.isOpenSidebar)
-    }
+
   }
 }
 </script>
 
 <style lang="less" scoped>
 .toolbar-container{
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 10px;
   box-sizing: border-box;
   box-shadow: 0 1px 0 rgba(204, 204, 204, 1);
+  background-color: rgba(245, 246, 247, 1);
+  z-index: 9999;
+}
+.toolbarViewer{
+  flex: 1;
+}
 
-}
-.toolbarButton{
-  height: 28px;
-  width: 28px;
-  background-repeat: no-repeat;
-  background-position: center;
-  color: rgba(12, 12, 13, 1);
-  border-radius: 2px;
-  &:hover{
-    background-color: rgba(221, 222, 223, 1);
-  }
-}
-.sidebarToggle{
-  background-image: url("../../img/toolbarButton-sidebarToggle.png");
-}
-.opened{
-  background-color: rgba(221, 222, 223, 1);
-}
+
+
 </style>

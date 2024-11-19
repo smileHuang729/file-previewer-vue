@@ -1,0 +1,32 @@
+
+.toolbarViewer{
+    display: flex;
+    align-items: center;
+}
+
+.toolbarButton{
+    height: 28px;
+    width: 28px;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: rgba(12, 12, 13, 1);
+    border-radius: 2px;
+    margin-right: 10px;
+    &:hover{
+        background-color: rgba(221, 222, 223, 1);
+    }
+}
+.toolbarLine{
+    height: 20px;
+    border-left: 1px solid #ccc;
+}
+
+.btn-opened{
+    background-color: rgba(221, 222, 223, 1);
+}
+.btn-noClick{
+    cursor: not-allowed !important;
+    &:hover{
+        background-color: unset !important;
+    }
+}

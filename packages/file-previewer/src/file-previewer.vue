@@ -1,12 +1,25 @@
 <template>
   <div class="file-previewer" :style="activeStyles">
-    <Tollbar ref="toolbarRef" class="toolbar" @handleChangeSidebar="handleChangeSidebar"/>
+    <!--顶部工具栏-->
+    <Tollbar
+      ref="toolbarRef"
+      class="toolbar"
+      :disabled="fileBlob ? false : true"
+      :pageNum="pageNum"
+      @handleChangeSidebar="handleChangeSidebar"
+    />
+
+    <!--展示区域-->
     <div class="content" v-if="fileBlob">
       <PdfContainer
+        ref="pdfContainerRef"
         v-if="['pdf', 'PDF'].includes(fileType)"
         :fileBlob="fileBlob"
+        @getPdfPageNum="getPdfPageNum"
       />
     </div>
+
+    <!--无数据-->
     <div v-else>
       暂无数据
     </div>
@@ -15,9 +28,9 @@
 </template>
 
 <script>
+import "./style/common.css"
 
-
-import PdfContainer from "./components/pdf/index.vue"
+import PdfContainer from "./components/pdfContainer/index.vue"
 import Tollbar from "./components/toolbar/index.vue"
 
 export default {
@@ -47,6 +60,12 @@ export default {
   created() {
 
   },
+  data() {
+    return {
+      pdfDoc: null,
+      pageNum: 0, // pdf总页数
+    }
+  },
   computed: {
     activeStyles() {
       const style = {}
@@ -63,6 +82,11 @@ export default {
   methods: {
     handleChangeSidebar(isOpen) {
       console.log('开启侧边栏', isOpen)
+      this.$refs.pdfContainerRef.openSidebar(isOpen)
+    },
+    // 获取pdf总页数
+    getPdfPageNum(pageNum) {
+      this.pageNum = pageNum
     }
   },
 }

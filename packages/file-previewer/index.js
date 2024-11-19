@@ -1,3 +1,6 @@
+
+
+
 // 导入组件，组件必须声明 name
 import FilePreviewer from './src/file-previewer.vue'
 

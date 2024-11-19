@@ -1,0 +1,10 @@
+.f-a{
+    display: flex;
+    align-items: center;
+}
+select{
+    font: message-box;
+    outline: none;
+    scrollbar-color: auto;
+    padding: 0 5px;
+}
