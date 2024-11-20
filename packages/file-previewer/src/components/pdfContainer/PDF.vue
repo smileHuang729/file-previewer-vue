@@ -207,8 +207,7 @@ export default {
   right: 0;
   bottom: 0;
   top: 0;
-
-
+  background-color: rgb(232, 232, 236);
   height: 100%;
   overflow: auto;
   outline: none;

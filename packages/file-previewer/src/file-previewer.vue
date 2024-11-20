@@ -1,7 +1,7 @@
 <template>
   <div class="file-previewer" :style="activeStyles">
     <!--顶部工具栏-->
-    <Tollbar
+    <Toolbar
       ref="toolbarRef"
       class="toolbar"
       :disabled="fileBlob ? false : true"
@@ -20,9 +20,7 @@
     </div>
 
     <!--无数据-->
-    <div v-else>
-      暂无数据
-    </div>
+    <NoData v-else/>
 
   </div>
 </template>
@@ -31,13 +29,15 @@
 import "./style/common.css"
 
 import PdfContainer from "./components/pdfContainer/index.vue"
-import Tollbar from "./components/toolbar/index.vue"
+import Toolbar from "./components/toolbar/index.vue"
+import NoData from "./components/noData/index.vue";
 
 export default {
   name: 'FilePreviewer',
   components: {
-    Tollbar,
-    PdfContainer
+    Toolbar,
+    PdfContainer,
+    NoData
   },
   props: {
     width: {

@@ -5,7 +5,7 @@
       <button @click="handleUpload">导入文件</button>
     </div>
     <FilePreviewer
-      width="1200"
+      width="1000"
       :fileBlob="fileBlob"
     />
   </div>
