@@ -1,5 +1,5 @@
 {
-  "name": "pdf-screenshot",
+  "name": "file-previewer-vue",
   "version": "0.1.0",
   "main": "file-previewer/file-previewer.umd.min.js",
   "private": false,
