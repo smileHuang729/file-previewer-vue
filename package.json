@@ -1,6 +1,6 @@
 {
   "name": "file-previewer-vue",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "main": "file-previewer/file-previewer.umd.min.js",
   "private": false,
   "author": "smileHuang729",
