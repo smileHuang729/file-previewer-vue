@@ -33,4 +33,4 @@ fileBlob
 ```
 
 ### 项目地址
-See [file-previewer](https://github.com/smileHuang729/file-previewer).
+See [file-previewer](https://github.com/smileHuang729/file-previewer-vue).
